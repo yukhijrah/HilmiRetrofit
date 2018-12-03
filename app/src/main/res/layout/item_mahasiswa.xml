@@ -25,13 +25,13 @@
             android:id="@+id/txt_nama"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="Muhammad Fadhil Hilmi"/>
+            android:text="Nama"/>
 
         <TextView
             android:id="@+id/txt_nim"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="0110216037"/>
+            android:text="Nim"/>
 
 
     </LinearLayout>
