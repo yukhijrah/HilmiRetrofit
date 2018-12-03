@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         requestDaftarMahasiswa();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        requestDaftarMahasiswa();
+    }
+
     private void requestDaftarMahasiswa(){
         Routes Services = network.request().create(Routes.class);
 
