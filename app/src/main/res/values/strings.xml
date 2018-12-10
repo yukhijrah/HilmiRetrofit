@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Portal_TI16</string>
+    <string name="menu_refresh"></string>
 </resources>
