@@ -1,6 +1,5 @@
 package com.example.hilmi.portal_ti16;
 
-import android.net.Network;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +23,7 @@ public class AddMahasiswaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_mahasiswa);
+        setContentView(R.layout.activity_detail_mahasiswa);
 
         edtName = (EditText) findViewById(R.id.edt_name);
         edtNim = (EditText) findViewById(R.id.edt_nim);
