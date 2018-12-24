@@ -1,9 +1,11 @@
 package com.example.hilmi.portal_ti16;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Network;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
@@ -19,6 +22,7 @@ import com.example.hilmi.portal_ti16.entity.DaftarMahasiswa;
 import com.example.hilmi.portal_ti16.entity.Mahasiswa;
 import com.example.hilmi.portal_ti16.network.Routes;
 import com.example.hilmi.portal_ti16.network.network;
+import com.example.hilmi.portal_ti16.util.Consts;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +34,8 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView listMahasiswa;
+    private RecyclerView listMahasiswa;
+    private FloatingActionButton btnAdd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +45,16 @@ public class MainActivity extends AppCompatActivity {
         listMahasiswa = (RecyclerView)findViewById(R.id.list_mahasiswa);
         listMahasiswa.setLayoutManager(new LinearLayoutManager(this));
 
-        requestDaftarMahasiswa();
+        //requestDaftarMahasiswa();
+
+        findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent addIntent = new Intent(MainActivity.this, DetailMahasiswaActivity.class);
+                addIntent.putExtra(Consts.KEY_ACTION_DETAIL, Consts.INTENT_ADD);
+                startActivity(addIntent);
+            }
+        });
     }
 
     @Override

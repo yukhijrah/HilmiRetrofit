@@ -1,13 +1,17 @@
 package com.example.hilmi.portal_ti16.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hilmi.portal_ti16.DetailMahasiswaActivity;
 import com.example.hilmi.portal_ti16.R;
 import com.example.hilmi.portal_ti16.entity.Mahasiswa;
 import com.example.hilmi.portal_ti16.holder.MahasiswaHolder;
+import com.example.hilmi.portal_ti16.util.Consts;
 
 import java.util.List;
 
@@ -31,9 +35,24 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaHolder>{
     @Override
     public MahasiswaHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mahasiswa, parent, false);
-        final MahasiswaHolder mahasiswaHolder = new MahasiswaHolder(itemView);
+        final MahasiswaHolder Holder = new MahasiswaHolder(itemView);
 
-        return mahasiswaHolder;
+        final Context context = Holder.itemView.getContext();
+
+        Holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //definisikan position untuk getMahasiswa
+                int adapterPosition = Holder.getAdapterPosition();
+                Mahasiswa mahasiswa = mahasiswas.get(adapterPosition);
+
+                Intent detailIntent = new Intent(context, DetailMahasiswaActivity.class);
+                detailIntent.putExtra("mahasiswa",mahasiswa);
+                detailIntent.putExtra(Consts.KEY_ACTION_DETAIL, Consts.INTENT_EDIT);
+                context.startActivity(detailIntent);
+            }
+        });
+        return Holder;
     }
 
     @Override
